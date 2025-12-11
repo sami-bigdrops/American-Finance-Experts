@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svg viewBox="0 0 360 360" version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg">
+  <title>bimi-svg-tiny-12-ps</title>
   <defs>
   </defs>
   <path fill="#3498db" stroke-width="0" d="m179.87,25.57l144.42,36.36s-1.81,106.44-23.69,157.19-53.71,90.92-120.44,126.33h0c-66.73-35.42-98.61-75.58-120.49-126.33S35.83,61.93,35.83,61.93L179.87,25.57Z"/>
