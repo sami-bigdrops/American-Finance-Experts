@@ -2,10 +2,11 @@
 
 import { useEffect } from 'react';
 import { Form } from './Form';
+import { SubscribeUnsubscribeForm } from './SubscribeUnsubscribeForm';
 import { useModal } from '../contexts/ModalContext';
 
 export function Modal() {
-    const { isModalOpen, closeModal } = useModal();
+    const { isModalOpen, closeModal, modalType } = useModal();
     useEffect(() => {
         if (isModalOpen) {
             document.body.style.overflow = 'hidden';
@@ -20,14 +21,26 @@ export function Modal() {
 
     if (!isModalOpen) return null;
 
+    const getTitle = () => {
+        switch (modalType) {
+            case 'subscribe':
+                return 'Subscribe to Our Newsletter';
+            case 'unsubscribe':
+                return 'Unsubscribe from Our Newsletter';
+            default:
+                return 'Get In Touch';
+        }
+    };
+
     return (
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-9999 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
             onClick={closeModal}
         >
             <div
                 className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg bg-(--color-white) shadow-xl"
                 onClick={(e) => e.stopPropagation()}
+                style={{ backgroundColor: 'var(--color-white)' }}
             >
                 <button
                     onClick={closeModal}
@@ -50,9 +63,16 @@ export function Modal() {
                 </button>
                 <div className="p-6 sm:p-8">
                     <h2 className="mb-6 font-title text-[24px] font-extrabold text-(--color-dark-blue) sm:text-[28px] md:text-[32px]">
-                        Get In Touch
+                        {getTitle()}
                     </h2>
-                    <Form onSuccess={closeModal} />
+                    {modalType === 'contact' ? (
+                        <Form onSuccess={closeModal} />
+                    ) : (
+                        <SubscribeUnsubscribeForm 
+                            type={modalType} 
+                            onSuccess={closeModal} 
+                        />
+                    )}
                 </div>
             </div>
         </div>
